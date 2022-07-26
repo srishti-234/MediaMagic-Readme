@@ -192,7 +192,7 @@ curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/media/4e06a91b-0c
 --header 'Authorization: Bearer $TOKEN'
 
 // Output example
-Status - 404
+Status - 204
 ```
 
 ## Models
@@ -691,5 +691,5 @@ curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/models/56c7c6bf-4
 --header 'Authorization: Bearer $TOKEN'
 
 // Output example
- Status - 404
+ Status - 204
 ```
