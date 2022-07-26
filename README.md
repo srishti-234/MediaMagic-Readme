@@ -29,6 +29,7 @@ Now set your auth token as an environment variable for later use.
 
 ```bash
 export TOKEN=<token>
+```
 
 ## Media
 
