@@ -77,6 +77,31 @@ export TOKEN=<token>
  }
 ```
 
+### Filter Media files with tags
+
+```
+ curl --location --request GET 'http://127.0.0.1:5001/api/v1/media' \
+ --header 'Authorization: Bearer $TOKEN'
+
+ // Output example
+ {
+    "media": [
+        {
+            "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
+            "image_name": "download.jpeg",
+            "media_key": "https://cdn.mediamagic.dev/media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
+            "status": "live",
+            "tags": [
+                "hair,face"
+            ],
+            "type": "source_asset",
+            "upload_date": "2022-07-26 11:28:03.259276 +0530 IST"
+        }
+    ],
+    "media_key": "https://cdn.mediamagic.dev"
+ }
+```
+
 ### Update Media files
 
 ```
@@ -110,7 +135,7 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/media/e8cc3bdb-0ca7-
 
 ## Models
 
-### Create with id
+### Create Models with id
 
 ```
 curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
@@ -181,7 +206,7 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
 }
 ```
 
-### Create without id or Random id
+### Create Models without id or Random id
 
 ```
 curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
@@ -224,7 +249,6 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
   "machine_count": 2,
   "tags": [
     "face",
-    "head",
     "body"
   ],
   "icon": "icon.jpg",
@@ -245,7 +269,6 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
     "name": "styleClip",
     "tags": [
         "face",
-        "head",
         "body"
     ]
 }
@@ -417,7 +440,6 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
         "name": "styleClip",
         "tags": [
             "face",
-            "head",
             "body"
         ],
         "updated_at": "2022-07-26 12:12:24.577571 +0530 IST"
@@ -425,4 +447,187 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
 ]
 ```
 
+### Filter Models by tags
 
+```
+curl --location --request GET 'http://127.0.0.1:5001/api/v1/models?tags=head' \
+--header 'Authorization: Bearer $TOKEN'
+
+[
+    {
+        "args": {
+            "alpha": {
+                "example": "",
+                "format": "--form alpha=:value",
+                "max": 100,
+                "min": 0,
+                "optional": false,
+                "type": "number"
+            },
+            "beta": {
+                "example": "",
+                "format": "--form beta=:value",
+                "max": 100,
+                "min": 0,
+                "optional": false,
+                "type": "number"
+            },
+            "image": {
+                "example": "",
+                "format": "--form image=:value",
+                "optional": true,
+                "type": "file"
+            },
+            "source": {
+                "example": "",
+                "format": "--form source=:value",
+                "optional": false,
+                "type": "string"
+            },
+            "target": {
+                "example": "",
+                "format": "--form target=:value",
+                "optional": false,
+                "type": "string"
+            }
+        },
+        "classification": "fast",
+        "description": "it does manipulation based on text query from user",
+        "example_outputs": [
+            "https://studio213.us/gpu/ai/input/em.jpg"
+        ],
+        "icon": "icon.jpg",
+        "id": "c691b065-2a8e-4db5-a8bb-3d33eaccf0d5",
+        "name": "styleClip",
+        "tags": [
+            "face",
+            "head",
+            "body"
+        ],
+        "updated_at": "2022-07-26 12:09:53.770645 +0530 IST"
+    }
+]
+```
+
+### Update Model
+
+```
+curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560-41d6-bb56-8c9c3be889c5' \
+--header 'Authorization: Bearer $TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "args": {
+    "image": {
+      "tags": [
+        "mask"
+      ],
+      "optional": true,
+      "type": "file",
+      "format": "--form image=:value"
+    },
+    "source": {
+      "type": "string",
+      "format": "--form source=:value"
+    },
+    "target": {
+      "type": "string",
+      "format": "--form target=:value"
+    },
+    "alpha": {
+      "type": "number",
+      "format": "--form alpha=:value",
+      "min": 0,
+      "max": 100
+    },
+    "beta": {
+      "type": "number",
+      "format": "--form beta=:value",
+      "min": 0,
+      "max": 100
+    }
+  },
+  "name": "styleClip",
+  "container": "ubuntu",
+  "machine_type": "container2",
+  "machine_count": 2,
+  "tags": [
+    "face",
+    "body",
+    "face2"
+  ],
+  "icon": "icon.jpg",
+  "command": "127.0.0.1:8013/styleclip {image} {source} {target} {alpha} {beta} --form output=/tmp/clust_mgr/",
+  "description": "it does manipulation based on text query from user",
+  "example_outputs": [
+    "https://studio213.us/gpu/ai/input/em.jpg"
+  ]
+}'
+
+// Output example
+ {
+    "args": {
+        "alpha": {
+            "example": "",
+            "format": "--form alpha=:value",
+            "max": 100,
+            "min": 0,
+            "optional": false,
+            "type": "number"
+        },
+        "beta": {
+            "example": "",
+            "format": "--form beta=:value",
+            "max": 100,
+            "min": 0,
+            "optional": false,
+            "type": "number"
+        },
+        "image": {
+            "example": "",
+            "format": "--form image=:value",
+            "optional": true,
+            "type": "file"
+        },
+        "source": {
+            "example": "",
+            "format": "--form source=:value",
+            "optional": false,
+            "type": "string"
+        },
+        "target": {
+            "example": "",
+            "format": "--form target=:value",
+            "optional": false,
+            "type": "string"
+        }
+    },
+    "command": "127.0.0.1:8013/styleclip {image} {source} {target} {alpha} {beta} --form output=/tmp/clust_mgr/",
+    "container": "ubuntu",
+    "description": "it does manipulation based on text query from user",
+    "example_outputs": [
+        "https://studio213.us/gpu/ai/input/em.jpg"
+    ],
+    "hidden": "false",
+    "icon": "icon.jpg",
+    "machine_count": 2,
+    "machine_type": "container2",
+    "name": "styleClip",
+    "tags": [
+        "face",
+        "body",
+        "face2"
+    ],
+    "updated_at": "2022-07-26 12:43:04.030819 +0530 IST"
+}
+```
+
+
+### Delete Model
+
+```
+curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/models/56c7c6bf-4987-4e36-9cc9-9281e96a7d74' \
+--header 'Authorization: Bearer $TOKEN'
+
+// Output example
+ Status - no content
+```
