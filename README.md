@@ -262,7 +262,7 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
 }
 ```
 
-### Create model without id or aandom id
+### Create model without id or random id
 
 ```
 curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
