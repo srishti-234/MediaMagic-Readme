@@ -34,29 +34,31 @@ export TOKEN=<token>
 
 ### Create a Media asset
 
-```curl --location --request POST 'http://127.0.0.1:9090/upload' \
---header 'Authorization: Bearer $TOKEN' \
---form 'media=@"/home/repo-l5/Downloads/download.jpeg"' \
---form 'tags="hair,face"'
+```
+ curl --location --request POST 'http://127.0.0.1:9090/upload' \
+ --header 'Authorization: Bearer $TOKEN' \
+ --form 'media=@"/home/repo-l5/Downloads/download.jpeg"' \
+ --form 'tags="hair,face"'
 
-// Output example
-{
+ // Output example
+ {
     "media": {
         "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
         "url": "https://cdn.mediamagic.dev/media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg"
     },
     "base_url": "https://cdn.mediamagic.dev"
-}```
+ }
+```
 
 
 ### List Media files
 
 ```
-curl --location --request GET 'http://127.0.0.1:5001/api/v1/media' \
---header 'Authorization: Bearer $TOKEN'
+ curl --location --request GET 'http://127.0.0.1:5001/api/v1/media' \
+ --header 'Authorization: Bearer $TOKEN'
 
-// Output example
-{
+ // Output example
+ {
     "media": [
         {
             "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
@@ -71,7 +73,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/media' \
         }
     ],
     "media_key": "https://cdn.mediamagic.dev"
-}
+ }
 ```
 
 ### Update Media files
