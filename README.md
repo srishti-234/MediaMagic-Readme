@@ -80,7 +80,7 @@ export TOKEN=<token>
 ### Filter Media files with tags
 
 ```
- curl --location --request GET 'http://127.0.0.1:5001/api/v1/media' \
+ curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?tags=hair' \
  --header 'Authorization: Bearer $TOKEN'
 
  // Output example
