@@ -33,7 +33,7 @@ export TOKEN=<token>
 
 ## Media
 
-### Create a Media asset
+### Create a media asset
 
 ```
  curl --location --request POST 'http://127.0.0.1:9090/upload' \
@@ -52,7 +52,7 @@ export TOKEN=<token>
 ```
 
 
-### List Media files
+### List media files
 
 ```
  curl --location --request GET 'http://127.0.0.1:5001/api/v1/media' \
@@ -77,7 +77,7 @@ export TOKEN=<token>
  }
 ```
 
-### Filter Media files with tags
+### Filter media files by tags
 
 ```
  curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?tags=hair' \
@@ -102,7 +102,53 @@ export TOKEN=<token>
  }
 ```
 
-### Update Media files
+### Filter media files by exclude tags
+
+```
+curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?excludeTags=hair' \
+--header 'Authorization: Bearer $TOKEN'
+
+// Output example
+{
+    "media": {
+        "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
+        "media_key": "media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
+        "status": "live",
+        "tags": [
+            "face",
+            "tags",
+            "hair"
+        ],
+        "title": "media-upload"
+    },
+    "media_key": "https://cdn.mediamagic.dev"
+}
+```
+
+### Filter media files by tags and exclude tags
+
+```
+curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?tags=face&excludeTags=hair' \
+--header 'Authorization: Bearer $TOKEN'
+
+// Output example
+{
+    "media": {
+        "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
+        "media_key": "media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
+        "status": "live",
+        "tags": [
+            "face",
+            "tags",
+            "hair"
+        ],
+        "title": "media-upload"
+    },
+    "media_key": "https://cdn.mediamagic.dev"
+}
+```
+
+### Update media files
 
 ```
 curl --location --request PUT 'http://127.0.0.1:5001/api/v1/media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765' \
@@ -133,7 +179,7 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/media/e8cc3bdb-0ca7-
 }
 ```
 
-### Delete Media files
+### Delete media files
 
 ```
 curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/media/4e06a91b-0cb7-11ed-b06e-98fa9bf84765' \
@@ -145,7 +191,7 @@ Status - 404
 
 ## Models
 
-### Create Models with id
+### Create model with id
 
 ```
 curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
@@ -216,7 +262,7 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
 }
 ```
 
-### Create Models without id or Random id
+### Create model without id or aandom id
 
 ```
 curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
@@ -283,7 +329,7 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
     ]
 }
 ```
-### Get Model by ID
+### Get model by id
 
 ```
 curl --location --request GET 'http://127.0.0.1:5001/api/v1/models/c691b065-2a8e-4db5-a8bb-3d33eaccf0d5' \
@@ -343,7 +389,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models/c691b065-2a8e
 }
 ```
 
-### List Models
+### List models
 
 ```
 curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
@@ -457,7 +503,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
 ]
 ```
 
-### Filter Models by tags
+### Filter models by tags
 
 ```
 curl --location --request GET 'http://127.0.0.1:5001/api/v1/models?tags=head' \
@@ -519,7 +565,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models?tags=head' \
 ]
 ```
 
-### Update Model
+### Update model
 
 ```
 curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560-41d6-bb56-8c9c3be889c5' \
@@ -632,7 +678,7 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560
 ```
 
 
-### Delete Model
+### Delete model
 
 ```
 curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/models/56c7c6bf-4987-4e36-9cc9-9281e96a7d74' \
