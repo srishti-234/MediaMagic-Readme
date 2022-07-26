@@ -133,6 +133,16 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/media/e8cc3bdb-0ca7-
 }
 ```
 
+### Delete Media files
+
+```
+curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/media/4e06a91b-0cb7-11ed-b06e-98fa9bf84765' \
+--header 'Authorization: Bearer $TOKEN'
+
+// Output example
+Status - 404
+```
+
 ## Models
 
 ### Create Models with id
@@ -629,5 +639,5 @@ curl --location --request DELETE 'http://127.0.0.1:5001/api/v1/models/56c7c6bf-4
 --header 'Authorization: Bearer $TOKEN'
 
 // Output example
- Status - no content
+ Status - 404
 ```
