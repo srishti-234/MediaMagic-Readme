@@ -33,13 +33,13 @@ export TOKEN=<token>
 
 ## Media
 
-### Create a media asset
+### Create media
 
 ```
  curl --location --request POST 'http://127.0.0.1:9090/upload' \
  --header 'Authorization: Bearer $TOKEN' \
  --form 'media=@"/home/repo-l5/Downloads/download.jpeg"' \
- --form 'tags="hair,face"'
+ --form 'tags="hair","face"'
 
  // Output example
  {
@@ -67,7 +67,7 @@ export TOKEN=<token>
             "media_key": "https://cdn.mediamagic.dev/media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
             "status": "live",
             "tags": [
-                "hair,face"
+                "hair", "face"
             ],
             "type": "source_asset",
             "upload_date": "2022-07-26 11:28:03.259276 +0530 IST"
@@ -80,47 +80,51 @@ export TOKEN=<token>
 ### Filter media files by tags
 
 ```
- curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?tags=hair' \
+ curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?tags=face' \
  --header 'Authorization: Bearer $TOKEN'
 
  // Output example
  {
     "media": [
         {
-            "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
-            "image_name": "download.jpeg",
-            "media_key": "https://cdn.mediamagic.dev/media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
+            "id": "f5e14b6f-0ccb-11ed-b4c1-98fa9bf84765",
+            "image_name": "images.jpeg",
+            "media_key": "https://cdn.mediamagic.dev/media/f5e14b6f-0ccb-11ed-b4c1-98fa9bf84765.jpeg",
             "status": "live",
             "tags": [
-                "hair,face"
+                "face",
+                "tags2",
+                "hair"
             ],
             "type": "source_asset",
-            "upload_date": "2022-07-26 11:28:03.259276 +0530 IST"
+            "upload_date": "2022-07-26 15:46:07.102843 +0530 IST"
         }
     ],
     "media_key": "https://cdn.mediamagic.dev"
- }
+}
 ```
 
 ### Filter media files by exclude tags
 
 ```
-curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?excludeTags=hair' \
+curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?excludeTags=face' \
 --header 'Authorization: Bearer $TOKEN'
 
 // Output example
 {
-    "media": {
-        "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
-        "media_key": "media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
-        "status": "live",
-        "tags": [
-            "face",
-            "tags",
-            "hair"
-        ],
-        "title": "media-upload"
-    },
+    "media": [
+        {
+            "id": "3e822ca6-0ccc-11ed-b4c1-98fa9bf84765",
+            "image_name": "images.jpeg",
+            "media_key": "https://cdn.mediamagic.dev/media/3e822ca6-0ccc-11ed-b4c1-98fa9bf84765.jpeg",
+            "status": "live",
+            "tags": [
+                "hair"
+            ],
+            "type": "source_asset",
+            "upload_date": "2022-07-26 15:48:08.702076 +0530 IST"
+        }
+    ],
     "media_key": "https://cdn.mediamagic.dev"
 }
 ```
@@ -128,22 +132,24 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?excludeTags=ha
 ### Filter media files by tags and exclude tags
 
 ```
-curl --location --request GET 'http://127.0.0.1:5001/api/v1/media?tags=face&excludeTags=hair' \
+curl --location --request GET ' http://127.0.0.1:5001/api/v1/media?tags=hair&excludeTags=test' \
 --header 'Authorization: Bearer $TOKEN'
 
 // Output example
 {
-    "media": {
-        "id": "e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765",
-        "media_key": "media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg",
-        "status": "live",
-        "tags": [
-            "face",
-            "tags",
-            "hair"
-        ],
-        "title": "media-upload"
-    },
+    "media": [
+        {
+            "id": "3e822ca6-0ccc-11ed-b4c1-98fa9bf84765",
+            "image_name": "images.jpeg",
+            "media_key": "https://cdn.mediamagic.dev/media/3e822ca6-0ccc-11ed-b4c1-98fa9bf84765.jpeg",
+            "status": "live",
+            "tags": [
+                "hair"
+            ],
+            "type": "source_asset",
+            "upload_date": "2022-07-26 15:48:08.702076 +0530 IST"
+        }
+    ],
     "media_key": "https://cdn.mediamagic.dev"
 }
 ```
@@ -348,7 +354,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models/c691b065-2a8e
         },
         "beta": {
             "example": "",
-            "format": "--form beta=:value",
+            "format": "--form beta=@:value",
             "max": 100,
             "min": 0,
             "optional": false,
