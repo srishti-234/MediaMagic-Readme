@@ -205,25 +205,25 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
       ],
       "optional": true,
       "type": "file",
-      "format": "--form image=:value"
+      "format": "--form image=@:value"
     },
     "source": {
       "type": "string",
-      "format": "--form source=:value"
+      "format": "--form source=@:value"
     },
     "target": {
       "type": "string",
-      "format": "--form target=:value"
+      "format": "--form target=@:value"
     },
     "alpha": {
       "type": "number",
-      "format": "--form alpha=:value",
+      "format": "--form alpha=@:value",
       "min": 0,
       "max": 100
     },
     "beta": {
       "type": "number",
-      "format": "--form beta=:value",
+      "format": "--form beta=@:value",
       "min": 0,
       "max": 100
     }
@@ -239,7 +239,7 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
   ],
   "id": "c691b065-2a8e-4db5-a8bb-3d33eaccf0d5",
   "icon": "icon.jpg",
-  "command": "127.0.0.1:8013/styleclip {image} {source} {target} {alpha} {beta} --form output=/tmp/clust_mgr/",
+  "command": "127.0.0.1:8013/styleclip {args} --form output=/tmp/clust_mgr/",
   "description": "it does manipulation based on text query from user",
   "example_outputs": [
     "https://studio213.us/gpu/ai/input/em.jpg"
@@ -276,25 +276,25 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
       ],
       "optional": true,
       "type": "file",
-      "format": "--form image=:value"
+      "format": "--form image=@:value"
     },
     "source": {
       "type": "string",
-      "format": "--form source=:value"
+      "format": "--form source=@:value"
     },
     "target": {
       "type": "string",
-      "format": "--form target=:value"
+      "format": "--form target=@:value"
     },
     "alpha": {
       "type": "number",
-      "format": "--form alpha=:value",
+      "format": "--form alpha=@:value",
       "min": 0,
       "max": 100
     },
     "beta": {
       "type": "number",
-      "format": "--form beta=:value",
+      "format": "--form beta=@:value",
       "min": 0,
       "max": 100
     }
@@ -308,7 +308,7 @@ curl --location --request POST 'http://127.0.0.1:5001/api/v1/models' \
     "body"
   ],
   "icon": "icon.jpg",
-  "command": "127.0.0.1:8013/styleclip {image} {source} {target} {alpha} {beta} --form output=/tmp/clust_mgr/",
+  "command": "127.0.0.1:8013/styleclip {args} --form output=/tmp/clust_mgr/",
   "description": "it does manipulation based on text query from user",
   "example_outputs": [
     "https://studio213.us/gpu/ai/input/em.jpg"
@@ -340,7 +340,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models/c691b065-2a8e
     "args": {
         "alpha": {
             "example": "",
-            "format": "--form alpha=:value",
+            "format": "--form alpha=@:value",
             "max": 100,
             "min": 0,
             "optional": false,
@@ -356,19 +356,19 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models/c691b065-2a8e
         },
         "image": {
             "example": "",
-            "format": "--form image=:value",
+            "format": "--form image=@:value",
             "optional": true,
             "type": "file"
         },
         "source": {
             "example": "",
-            "format": "--form source=:value",
+            "format": "--form source=@:value",
             "optional": false,
             "type": "string"
         },
         "target": {
             "example": "",
-            "format": "--form target=:value",
+            "format": "--form target=@:value",
             "optional": false,
             "type": "string"
         }
@@ -401,7 +401,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
         "args": {
             "alpha": {
                 "example": "",
-                "format": "--form alpha=:value",
+                "format": "--form alpha=@:value",
                 "max": 100,
                 "min": 0,
                 "optional": false,
@@ -409,7 +409,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
             },
             "beta": {
                 "example": "",
-                "format": "--form beta=:value",
+                "format": "--form beta=@:value",
                 "max": 100,
                 "min": 0,
                 "optional": false,
@@ -417,19 +417,19 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
             },
             "image": {
                 "example": "",
-                "format": "--form image=:value",
+                "format": "--form image=@:value",
                 "optional": true,
                 "type": "file"
             },
             "source": {
                 "example": "",
-                "format": "--form source=:value",
+                "format": "--form source=@:value",
                 "optional": false,
                 "type": "string"
             },
             "target": {
                 "example": "",
-                "format": "--form target=:value",
+                "format": "--form target=@:value",
                 "optional": false,
                 "type": "string"
             }
@@ -453,7 +453,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
         "args": {
             "alpha": {
                 "example": "",
-                "format": "--form alpha=:value",
+                "format": "--form alpha=@:value",
                 "max": 100,
                 "min": 0,
                 "optional": false,
@@ -461,7 +461,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
             },
             "beta": {
                 "example": "",
-                "format": "--form beta=:value",
+                "format": "--form beta=@:value",
                 "max": 100,
                 "min": 0,
                 "optional": false,
@@ -469,19 +469,19 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models' \
             },
             "image": {
                 "example": "",
-                "format": "--form image=:value",
+                "format": "--form image=@:value",
                 "optional": true,
                 "type": "file"
             },
             "source": {
                 "example": "",
-                "format": "--form source=:value",
+                "format": "--form source=@:value",
                 "optional": false,
                 "type": "string"
             },
             "target": {
                 "example": "",
-                "format": "--form target=:value",
+                "format": "--form target=@:value",
                 "optional": false,
                 "type": "string"
             }
@@ -514,7 +514,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models?tags=head' \
         "args": {
             "alpha": {
                 "example": "",
-                "format": "--form alpha=:value",
+                "format": "--form alpha=@:value",
                 "max": 100,
                 "min": 0,
                 "optional": false,
@@ -522,7 +522,7 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models?tags=head' \
             },
             "beta": {
                 "example": "",
-                "format": "--form beta=:value",
+                "format": "--form beta=@:value",
                 "max": 100,
                 "min": 0,
                 "optional": false,
@@ -530,19 +530,19 @@ curl --location --request GET 'http://127.0.0.1:5001/api/v1/models?tags=head' \
             },
             "image": {
                 "example": "",
-                "format": "--form image=:value",
+                "format": "--form image=@:value",
                 "optional": true,
                 "type": "file"
             },
             "source": {
                 "example": "",
-                "format": "--form source=:value",
+                "format": "--form source=@:value",
                 "optional": false,
                 "type": "string"
             },
             "target": {
                 "example": "",
-                "format": "--form target=:value",
+                "format": "--form target=@:value",
                 "optional": false,
                 "type": "string"
             }
@@ -579,25 +579,25 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560
       ],
       "optional": true,
       "type": "file",
-      "format": "--form image=:value"
+      "format": "--form image=@:value"
     },
     "source": {
       "type": "string",
-      "format": "--form source=:value"
+      "format": "--form source=@:value"
     },
     "target": {
       "type": "string",
-      "format": "--form target=:value"
+      "format": "--form target=@:value"
     },
     "alpha": {
       "type": "number",
-      "format": "--form alpha=:value",
+      "format": "--form alpha=@:value",
       "min": 0,
       "max": 100
     },
     "beta": {
       "type": "number",
-      "format": "--form beta=:value",
+      "format": "--form beta=@:value",
       "min": 0,
       "max": 100
     }
@@ -612,7 +612,7 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560
     "face2"
   ],
   "icon": "icon.jpg",
-  "command": "127.0.0.1:8013/styleclip {image} {source} {target} {alpha} {beta} --form output=/tmp/clust_mgr/",
+  "command": "127.0.0.1:8013/styleclip {args} --form output=/tmp/clust_mgr/",
   "description": "it does manipulation based on text query from user",
   "example_outputs": [
     "https://studio213.us/gpu/ai/input/em.jpg"
@@ -624,7 +624,7 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560
     "args": {
         "alpha": {
             "example": "",
-            "format": "--form alpha=:value",
+            "format": "--form alpha=@:value",
             "max": 100,
             "min": 0,
             "optional": false,
@@ -632,7 +632,7 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560
         },
         "beta": {
             "example": "",
-            "format": "--form beta=:value",
+            "format": "--form beta=@:value",
             "max": 100,
             "min": 0,
             "optional": false,
@@ -640,19 +640,19 @@ curl --location --request PUT 'http://127.0.0.1:5001/api/v1/models/1c3c27d8-5560
         },
         "image": {
             "example": "",
-            "format": "--form image=:value",
+            "format": "--form image=@:value",
             "optional": true,
             "type": "file"
         },
         "source": {
             "example": "",
-            "format": "--form source=:value",
+            "format": "--form source=@:value",
             "optional": false,
             "type": "string"
         },
         "target": {
             "example": "",
-            "format": "--form target=:value",
+            "format": "--form target=@:value",
             "optional": false,
             "type": "string"
         }
