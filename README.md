@@ -34,8 +34,7 @@ export TOKEN=<token>
 
 ### Create a Media asset
 
-```
-curl --location --request POST 'http://127.0.0.1:9090/upload' \
+```curl --location --request POST 'http://127.0.0.1:9090/upload' \
 --header 'Authorization: Bearer $TOKEN' \
 --form 'media=@"/home/repo-l5/Downloads/download.jpeg"' \
 --form 'tags="hair,face"'
@@ -47,8 +46,7 @@ curl --location --request POST 'http://127.0.0.1:9090/upload' \
         "url": "https://cdn.mediamagic.dev/media/e8cc3bdb-0ca7-11ed-a94e-98fa9bf84765.jpeg"
     },
     "base_url": "https://cdn.mediamagic.dev"
-}
-```
+}```
 
 
 ### List Media files
